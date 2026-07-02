@@ -1,0 +1,125 @@
+/* Warna Default / Light Mode */
+:root {
+    --bg-main: #f4f7f6;
+    --bg-card: #ffffff;
+    --text-color: #2c3e50;
+    --text-muted: #6c757d;
+    --sidebar-grad1: #2c3e50;
+    --sidebar-grad2: #34495e;
+    --border-color: #dee2e6;
+    --table-bg: #ffffff;
+}
+
+/* Warna Khusus Dark Mode */
+[data-theme="dark"] {
+    --bg-main: #121212;
+    --bg-card: #1e1e1e;
+    --text-color: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --sidebar-grad1: #1a1a1a;
+    --sidebar-grad2: #262626;
+    --border-color: #333333;
+    --table-bg: #1e1e1e;
+}
+
+/* Implementasi Variabel pada Elemen Global */
+body {
+    background-color: var(--bg-main) !important;
+    color: var(--text-color) !important;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar {
+    background: linear-gradient(135deg, var(--sidebar-grad1), var(--sidebar-grad2));
+    min-height: 100vh;
+    color: white;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    transition: background 0.3s ease;
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 5px;
+    border-radius: 6px;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: all 0.2s ease;
+}
+
+.sidebar .nav-link.active, .sidebar .nav-link:hover {
+    background-color: #3498db;
+    color: white;
+    transform: translateX(3px);
+}
+
+/* Mengubah warna Card secara otomatis */
+.card {
+    background-color: var(--bg-card) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ===================================================
+   PERBAIKAN WARNA TEKS TABEL (DARK & LIGHT MODE)
+   =================================================== */
+
+.table-responsive {
+    background-color: var(--table-bg) !important;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.table {
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Memaksa semua elemen di dalam cell tabel agar warnanya dinamis */
+.table tbody tr, 
+.table td, 
+.table td strong, 
+.table td span,
+.table td a {
+    background-color: var(--table-bg) !important;
+    color: var(--text-color) !important; /* 👈 Menjadikan teks otomatis putih saat dark mode */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Pastikan judul kolom tabel (thead) tetap kontras dan terbaca */
+.table-dark th {
+    background-color: #212529 !important;
+    color: #ffffff !important;
+}
+
+/* Tambahan: Pastikan input pencarian teksnya juga berubah saat diganti modenya */
+.form-control, .form-select {
+    background-color: var(--bg-card) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Mengatur warna teks ketikan di dalam input agar tetap terlihat jelas */
+.form-control:focus, .form-select:focus {
+    background-color: var(--bg-card) !important;
+    color: var(--text-color) !important;
+    border-color: #3498db !important; /* Efek garis biru tipis saat kotak diklik/fokus */
+    box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25) !important;
+}
+
+/* Memperbaiki warna teks petunjuk (placeholder) agar tidak hilang di latar gelap */
+.form-control::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 0.7;
+}
+
+/* Memperbaiki label teks di atas kotak input (jika menggunakan kelas bawaan text-muted) */
+form label, .text-muted {
+    color: var(--text-color) !important;
+    opacity: 0.85;
+    transition: color 0.3s ease;
+}
